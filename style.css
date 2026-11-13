@@ -1,0 +1,150 @@
+/* Delivery Days: game, privacy and support pages. Plain CSS, no external requests. */
+
+@font-face {
+  font-family: "Nunito Black";
+  src: url("fonts/nunito-black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+  --bg: #fbf3e6;
+  --surface: #ffffff;
+  --surface-2: #f4e7d3;
+  --ink: #2b2130;
+  --muted: #65575f;
+  --line: #e4d3bb;
+  --link: #1f5fbf;
+  --accent: #23853a;
+  --accent-ink: #ffffff;
+  --gem: #c2307a;
+  --sun: #f2a541;
+  --shadow: 0 1px 0 rgba(43, 33, 48, 0.06), 0 8px 24px -12px rgba(43, 33, 48, 0.25);
+  --radius: 18px;
+  --head: "Nunito Black", ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1b1420;
+    --surface: #251c2b;
+    --surface-2: #2f2438;
+    --ink: #f5ecdd;
+    --muted: #c3b3bc;
+    --line: #3e3048;
+    --link: #8fb9ff;
+    --accent: #2f9e48;
+    --accent-ink: #ffffff;
+    --gem: #f07ab5;
+    --sun: #f2b45e;
+    --shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 10px 28px -14px rgba(0, 0, 0, 0.7);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.6 var(--body);
+  overflow-wrap: break-word;
+}
+
+a { color: var(--link); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 16px; }
+
+/* Header */
+.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-family: var(--head); font-size: 19px; }
+.brand img { width: 36px; height: 36px; border-radius: 9px; }
+.nav { display: flex; gap: 4px 14px; flex-wrap: wrap; font-size: 15px; }
+.nav a { color: var(--muted); text-decoration: none; padding: 4px 0; }
+.nav a:hover, .nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
+
+/* Headings and text */
+h1, h2, h3 { font-family: var(--head); font-weight: 900; line-height: 1.2; letter-spacing: 0.005em; }
+h1 { font-size: clamp(30px, 7vw, 44px); margin: 0 0 8px; }
+h2 { font-size: 24px; margin: 40px 0 10px; }
+h3 { font-size: 18px; margin: 24px 0 6px; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 22px; }
+li { margin: 4px 0; }
+.muted { color: var(--muted); }
+.small { font-size: 15px; }
+.flush { margin: 0; }
+.spaced { margin-top: 24px; }
+
+/* Hero */
+.hero { text-align: center; padding-top: 40px; padding-bottom: 8px; }
+.hero .icon { width: 128px; height: 128px; border-radius: 28px; box-shadow: var(--shadow); }
+.hero .tag { font-size: 19px; color: var(--muted); max-width: 34ch; margin: 0 auto 20px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 22px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  font-family: var(--head); font-size: 17px; text-decoration: none;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18);
+}
+.note { margin-top: 12px; }
+.btn-soon { background: var(--surface-2); color: var(--ink); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.08); cursor: default; }
+
+/* Feature cards */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 28px 0; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+.card h3 { margin: 0 0 4px; font-size: 17px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* Chapter strip */
+.chapters { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; list-style: none; margin: 8px 0 0; }
+.chapters li { margin: 0; padding: 6px 12px; border-radius: 999px; background: var(--surface-2); font-size: 15px; }
+.chapters li.soon { background: transparent; border: 1px dashed var(--line); color: var(--muted); }
+
+/* Long-form pages */
+.doc { padding-top: 32px; padding-bottom: 8px; }
+.doc .lead { font-size: 18px; color: var(--muted); }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 20px; margin: 18px 0; box-shadow: var(--shadow); }
+.box ul { margin: 0; }
+.box h2:first-child { margin-top: 0; }
+.toc { font-size: 15px; }
+.toc ol { margin: 0; columns: 2 220px; column-gap: 24px; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+th { font-family: var(--head); font-weight: 900; }
+.table-scroll { overflow-x: auto; }
+
+/* FAQ */
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; margin: 10px 0; }
+details[open] { padding-bottom: 6px; }
+summary { cursor: pointer; font-weight: 700; padding: 14px 0; }
+summary::marker { color: var(--muted); }
+
+.lang-sep { margin: 48px 0 0; border: 0; border-top: 1px solid var(--line); }
+
+/* Footer */
+.foot { margin-top: 48px; border-top: 1px solid var(--line); background: var(--surface); font-size: 15px; }
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: space-between; padding-top: 18px; padding-bottom: 24px; }
+.foot nav { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding-top: 28px; }
+  .hero .icon { width: 104px; height: 104px; border-radius: 23px; }
+  th, td { padding: 7px 6px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: transform 0.12s ease; }
+  .btn:not(.btn-soon):active { transform: translateY(1px); }
+}
